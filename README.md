@@ -8,7 +8,11 @@ Node Module for comparing arrays
 
 ##Syntax
 
-```comparray(array1, array2)```
+```comparray(array1, array2[, options])```
+
+**array1, array2
+
+Arrays to compare.
 
 ##Output
 
