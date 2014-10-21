@@ -71,12 +71,48 @@ describe('comparray module', function(){
     });
     it('should return true if the arrays have the same elements', function(){
       // arrange
-      var arg1 = [1,2,[3,4]];
-      var arg2 = [1,2,[3,4]];
+      var arg1 = [1,2];
+      var arg2 = [1,2];
       // act
       var result = comparray(arg1, arg2);
       // assert
       expect(result).to.be(true);
+    });
+    it('should return true if nested arrays have the same elements', function(){
+      // arrange
+      var arg1 = [1,2,[1,2]];
+      var arg2 = [1,2,[1,2]];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(true);
+    });
+    it('should return true if nested arrays have the same elements', function(){
+      // arrange
+      var arg1 = [1,2,[2,[3]]];
+      var arg2 = [1,2,[2,[3]]];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(true);
+    });
+    it('should return true if nested arrays have the same elements', function(){
+      // arrange
+      var arg1 = [1,[2,2],[3,[4]]];
+      var arg2 = [1,[2,2],[3,[4]]];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(true);
+    });
+    it('should return false if nested arrays have differing elements', function(){
+      // arrange
+      var arg1 = [1,2,[1,2]];
+      var arg2 = [1,2,[3,4]];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(false);
     });
   });
 
