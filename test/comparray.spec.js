@@ -1,0 +1,44 @@
+'use strict';
+var expect    = require('expect.js')
+  , catchErr  = require('catch-error')
+  , comparray = require('../index');
+
+describe('comparray module', function(){
+
+  describe('when passing arrays as 1st and second arguments', function(){
+    it('should return something', function(){
+      // arrange
+      var arg1 = [];
+      var arg2 = [];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).not.to.be(undefined);
+    });
+  });
+
+  describe('when passing anything other than an array as the 1st argument', function(){
+    it('should throw an exception', function(){
+      // arrange
+      var arg1 = "String";
+      var arg2 = [];
+      // act
+      var result = catchErr({ func: comparray, args: [arg1, arg2] });
+      // assert
+      expect(result).to.be.an(Error);
+    });
+  });
+
+  describe('when passing anything other than an array as the 2nd argument', function(){
+    it('should throw an exception', function(){
+      // arrange
+      var arg1 = [];
+      var arg2 = "String";
+      // act
+      var result = catchErr({ func: comparray, args: [arg1, arg2] });
+      // assert
+      expect(result).to.be.an(Error);
+    });
+  });
+
+});
