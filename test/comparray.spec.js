@@ -114,6 +114,27 @@ describe('comparray module', function(){
       // assert
       expect(result).to.be(false);
     });
+    it('should return true if matching elements are the same object', function(){
+      // arrange
+      var obj1 = {};
+      var arg1 = [ 1, 2, obj1 ];
+      var arg2 = [ 1, 2, obj1 ];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(true);
+    });
+    it('should return false if matching elements are different objects', function(){
+      // arrange
+      var obj1 = {};
+      var obj2 = {};
+      var arg1 = [ 1, 2, obj1 ];
+      var arg2 = [ 1, 2, obj2 ];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(false);
+    });
   });
 
 });
