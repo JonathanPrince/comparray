@@ -20,7 +20,9 @@ module.exports = function(array1, array2){
         // check if element is itself an array
         if (firstArray[i] instanceof Array && secondArray[i] instanceof Array) {
 
-          compareArrayElements(firstArray[i], secondArray[i]);
+          if (!compareArrayElements(firstArray[i], secondArray[i])){
+            return false;
+          }
 
         } else {
 
