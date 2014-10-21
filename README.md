@@ -35,6 +35,6 @@ var result = comparray(array1, array2);     // result will be true
 
 array2.push(4);
 
-var result2 = comparray(array1, array2);    // result will be false
+var result2 = comparray(array1, array2);    // result2 will be false
 
 ```
