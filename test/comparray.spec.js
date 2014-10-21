@@ -20,7 +20,7 @@ describe('comparray module', function(){
   describe('when passing anything other than an array as the 1st argument', function(){
     it('should throw an exception', function(){
       // arrange
-      var arg1 = "String";
+      var arg1 = 'String';
       var arg2 = [];
       // act
       var result = catchErr({ func: comparray, args: [arg1, arg2] });
@@ -33,7 +33,7 @@ describe('comparray module', function(){
     it('should throw an exception', function(){
       // arrange
       var arg1 = [];
-      var arg2 = "String";
+      var arg2 = 'String';
       // act
       var result = catchErr({ func: comparray, args: [arg1, arg2] });
       // assert
