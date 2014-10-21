@@ -10,6 +10,7 @@ Node Module for comparing arrays
 
 ```comparray(array1, array2[, options])```
 
+<<<<<<< HEAD
 **array1, array2**
 
 Arrays to compare.
