@@ -1,0 +1,32 @@
+{
+  "name": "comparray",
+  "version": "0.0.1",
+  "description": "Module for comparing arrays",
+  "main": "index.js",
+  "scripts": {
+    "test:dev": "testem .",
+    "test": "npm run jshint && mocha -R spec test/**/*.spec.js",
+    "jshint": "jshint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonathanPrince/comparray.git"
+  },
+  "keywords": [
+    "array",
+    "comparision",
+    "compare"
+  ],
+  "author": "Jonathan Prince",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonathanPrince/comparray/issues"
+  },
+  "homepage": "https://github.com/JonathanPrince/comparray",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "jshint": "^2.5.6",
+    "mocha": "^1.21.5",
+    "testem": "^0.6.22"
+  }
+}
