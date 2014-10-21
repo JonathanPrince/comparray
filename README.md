@@ -10,9 +10,13 @@ Node Module for comparing arrays
 
 ```comparray(array1, array2[, options])```
 
-**array1, array2
+**array1, array2**
 
 Arrays to compare.
+
+**options** (optional)
+
+Options for the comparision.
 
 ##Output
 
