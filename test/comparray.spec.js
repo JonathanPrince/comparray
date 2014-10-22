@@ -136,5 +136,16 @@ describe('comparray module', function(){
       expect(result).to.be(false);
     });
   });
+  describe('passing matching arrays with NaN elements in the same index', function(){
+    it('should return true', function(){
+      // arrange
+      var arg1 = [1, 2, NaN, 4];
+      var arg2 = [1, 2, NaN, 4];
+      // act
+      var result = comparray(arg1, arg2);
+      // assert
+      expect(result).to.be(true);
+    });
+  });
 
 });

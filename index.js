@@ -24,11 +24,12 @@ module.exports = function(array1, array2){
             return false;
           }
 
+        } else if (Number.isNaN(firstArray[i]) && Number.isNaN(secondArray[i])) {
+          continue;
         } else {
 
           return false;
         }
-
       }
     }
 
