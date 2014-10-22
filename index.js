@@ -4,8 +4,8 @@ var assert = require('assert');
 
 module.exports = function(array1, array2){
 
-  assert.equal(array1 instanceof Array, true, 'first arguement should be an array');
-  assert.equal(array2 instanceof Array, true, 'second arguement should be an array');
+  assert.equal(Array.isArray(array1), true, 'first arguement should be an array');
+  assert.equal(Array.isArray(array2), true, 'second arguement should be an array');
 
   if(array1.length !== array2.length) {
     return false;
@@ -18,7 +18,7 @@ module.exports = function(array1, array2){
       if (firstArray[i] !== secondArray[i]) {
 
         // check if element is itself an array
-        if (firstArray[i] instanceof Array && secondArray[i] instanceof Array) {
+        if (Array.isArray(firstArray[i]) && Array.isArray(secondArray[i])) {
 
           if (!compareArrayElements(firstArray[i], secondArray[i])){
             return false;
