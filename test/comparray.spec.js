@@ -5,6 +5,9 @@ var expect    = require('expect.js')
 
 describe('comparray module', function(){
 
+  /*
+   * test for valid arguments
+   */
   describe('when passing arrays as 1st and second arguments', function(){
     it('should return something', function(){
       // arrange
@@ -41,6 +44,22 @@ describe('comparray module', function(){
     });
   });
 
+  describe('when passing anything other than an object as the 3rd argument', function(){
+    it('should throw an exception if 3rd arg is a string', function(){
+      // arrange
+      var arg1 = [];
+      var arg2 = [];
+      var arg3 = 'string';
+      // act
+      var result = catchErr({ func: comparray, args: [arg1, arg2, arg3] });
+      // assert
+      expect(result).to.be.an(Error);
+    });
+  });
+
+  /*
+   * test array comparision without optional 3rd argument
+   */
   describe('when passing arrays as 1st and 2nd arguments without a 3rd argument', function(){
     it('should return true if the arrays have the same length', function(){
       // arrange
@@ -135,16 +154,34 @@ describe('comparray module', function(){
       // assert
       expect(result).to.be(false);
     });
+
+    // test for comparing NaN with NaN
+    describe('passing matching arrays with NaN elements in the same index', function(){
+      it('should return true', function(){
+        // arrange
+        var arg1 = [1, 2, NaN, 4];
+        var arg2 = [1, 2, NaN, 4];
+        // act
+        var result = comparray(arg1, arg2);
+        // assert
+        expect(result).to.be(true);
+      });
+    });
+
   });
-  describe('passing matching arrays with NaN elements in the same index', function(){
-    it('should return true', function(){
-      // arrange
-      var arg1 = [1, 2, NaN, 4];
-      var arg2 = [1, 2, NaN, 4];
-      // act
-      var result = comparray(arg1, arg2);
-      // assert
-      expect(result).to.be(true);
+
+  /*
+   * test optional 3rd argument (option object)
+   */
+  describe('when passing arrays as 1st and 2nd arguments with a 3rd argument', function(){
+    describe('if the arrays match and the third argument is an empty object', function(){
+      it('should return true', function(){
+        var arr1 = ['one', 'two'];
+        var arr2 = ['one', 'two'];
+        var obj  = {};
+        var result = comparray(arr1, arr2, obj);
+        expect(result).to.be(true);
+      });
     });
   });
 

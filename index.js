@@ -2,10 +2,14 @@
 
 var assert = require('assert');
 
-module.exports = function(array1, array2){
+module.exports = function(array1, array2, options){
 
+  options = options || {};
+
+  // check argument types and return an error if needed
   assert.equal(Array.isArray(array1), true, 'first arguement should be an array');
   assert.equal(Array.isArray(array2), true, 'second arguement should be an array');
+  assert.equal(typeof options, 'object', 'third argument should be an object');
 
   if(array1.length !== array2.length) {
     return false;
