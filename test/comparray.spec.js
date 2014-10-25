@@ -174,7 +174,15 @@ describe('comparray module', function(){
    * test optional 3rd argument (option object)
    */
   describe('when passing arrays as 1st and 2nd arguments with a 3rd argument', function(){
-
+    describe('if the arrays match and the third argument is an empty object', function(){
+      it('should return true', function(){
+        var arr1 = ['one', 'two'];
+        var arr2 = ['one', 'two'];
+        var obj  = {};
+        var result = comparray(arr1, arr2, obj);
+        expect(result).to.be(true);
+      });
+    });
   });
 
 });
