@@ -183,6 +183,36 @@ describe('comparray module', function(){
         expect(result).to.be(true);
       });
     });
+
+    // test diff options
+    describe('if the third argument contains the key show', function(){
+
+      describe('with value: missing', function(){
+        it('should return the elements in array1 that are not in array2', function(){
+          var arr1 = ['one', 'two', 'three', 'four'];
+          var arr2 = ['one', 'two'];
+          var obj  = {
+            show: 'missing'
+          };
+          var expected = ['three', 'four'];
+          var result = comparray(arr1, arr2, obj);
+          expect(result).to.eql(expected);
+        });
+      });
+
+      describe('with value: common', function(){
+        it('should return the elements in array1 that are also in array2', function(){
+          var arr1 = ['one', 'two', 'three', 'four'];
+          var arr2 = ['one', 'three', 'four', 'five'];
+          var obj  = {
+            show: 'common'
+          };
+          var expected = ['one', 'three', 'four'];
+          var result = comparray(arr1, arr2, obj);
+          expect(result).to.eql(expected);
+        });
+      });
+    });
   });
 
 });
