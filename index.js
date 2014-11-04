@@ -11,10 +11,6 @@ module.exports = function(array1, array2, options){
   assert.equal(Array.isArray(array2), true, 'second arguement should be an array');
   assert.equal(typeof options, 'object', 'third argument should be an object');
 
-  if(array1.length !== array2.length) {
-    return false;
-  }
-
   function compareArrayElements(firstArray, secondArray){
 
     for(var i = 0; i < firstArray.length; i++) {
@@ -41,7 +37,44 @@ module.exports = function(array1, array2, options){
 
   }
 
+  function diff_missing(firstArray, secondArray) {
 
-  return compareArrayElements(array1, array2);
+    var result = [];
+    var el;
+
+    for (var i = 0;i < firstArray.length;i++) {
+
+      el = firstArray[i];
+
+      if (secondArray.indexOf(el) === -1){
+        result.push(el);
+      }
+    }
+
+    return result;
+
+  }
+
+  if(options.hasOwnProperty('show')) {
+
+    switch(options.show) {
+
+      case 'missing':
+        return diff_missing(array1, array2);
+
+      default:
+        return compareArrayElements(array1, array2);
+
+    }
+
+  } else {
+
+    if (array1.length !== array2.length) {
+      return false;
+    }
+
+    return compareArrayElements(array1, array2);
+
+  }
 
 };
