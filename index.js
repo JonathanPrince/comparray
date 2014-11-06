@@ -79,6 +79,32 @@ module.exports = function(array1, array2, options){
 
   }
 
+  function likeness(firstArray, secondArray) {
+
+    var el, arrA, arrB, total, common;
+
+    if (firstArray.length >= secondArray.length) {
+      arrA = firstArray;
+      arrB = secondArray;
+    } else {
+      arrA = secondArray;
+      arrB = firstArray;
+    }
+
+    total  = arrA.length;
+    common = 0;
+
+    for (var i = 0;i < total;i++) {
+      el = arrA[i];
+      if (arrB.indexOf(el) >= 0) {
+        common++;
+      }
+    }
+
+    return common / total;
+
+  }
+
   if(options.hasOwnProperty('show')) {
 
     switch(options.show) {
@@ -88,6 +114,9 @@ module.exports = function(array1, array2, options){
 
       case 'common':
         return diff_common(array1, array2);
+
+      case 'likeness':
+        return likeness(array1, array2);
 
       default:
         return compareArrayElements(array1, array2);
