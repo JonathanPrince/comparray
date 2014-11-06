@@ -212,6 +212,20 @@ describe('comparray module', function(){
           expect(result).to.eql(expected);
         });
       });
+
+      describe('with value: likeness', function(){
+        it('should return a decimal fraction of elements common to both arrays', function(){
+          var arr1 = ['one', 'two', 'three', 'four'];
+          var arr2 = ['one', 'two'];
+          var obj  = {
+            show: 'likeness'
+          };
+          var expected = 0.5;
+          var result = comparray(arr1, arr2, obj);
+          expect(result).to.equal(expected);
+        });
+      });
+
     });
   });
 
