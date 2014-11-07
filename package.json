@@ -1,6 +1,6 @@
 {
   "name": "comparray",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Module for comparing arrays",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,9 @@
     "array",
     "comparision",
     "compare",
-    "array diff"
+    "array diff",
+    "likeness",
+    "common"
   ],
   "author": "Jonathan Prince",
   "license": "MIT",
