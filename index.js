@@ -37,56 +37,14 @@ module.exports = function(array1, array2, options){
 
   }
 
-  function diff_missing(firstArray, secondArray) {
+  function likeness(firstArray, secondArray, mode) {
 
-    var result = [];
-    var el;
+    var el, arrA, arrB, total, common, result = [];
 
-    for (var i = 0;i < firstArray.length;i++) {
+    arrA = firstArray;
+    arrB = secondArray;
 
-      el = firstArray[i];
-
-      if (secondArray.indexOf(el) === -1){
-        result.push(el);
-      }
-    }
-
-    return result;
-
-  }
-
-  function diff_common(firstArray, secondArray) {
-
-    var el, arrA, arrB;
-    var result = [];
-
-    if (firstArray.length >= secondArray.length) {
-      arrA = firstArray;
-      arrB = secondArray;
-    } else {
-      arrA = secondArray;
-      arrB = firstArray;
-    }
-
-    for (var i = 0;i < arrA.length;i++) {
-      el = arrA[i];
-      if (arrB.indexOf(el) >= 0) {
-        result.push(el);
-      }
-    }
-
-    return result;
-
-  }
-
-  function likeness(firstArray, secondArray) {
-
-    var el, arrA, arrB, total, common;
-
-    if (firstArray.length >= secondArray.length) {
-      arrA = firstArray;
-      arrB = secondArray;
-    } else {
+    if (mode !== 'missing' && firstArray.length <= secondArray.length) {
       arrA = secondArray;
       arrB = firstArray;
     }
@@ -96,13 +54,19 @@ module.exports = function(array1, array2, options){
 
     for (var i = 0;i < total;i++) {
       el = arrA[i];
-      if (arrB.indexOf(el) >= 0) {
+      if (arrB.indexOf(el) >= 0 && mode !== 'missing') {
+        result.push(el);
         common++;
+      } else if (secondArray.indexOf(el) === -1 && mode === 'missing') {
+        result.push(el);
       }
     }
 
-    return common / total;
-
+    if (mode === 'likeness') {
+      return common / total;
+    } else {
+      return result;
+    }
   }
 
   if(options.hasOwnProperty('show')) {
@@ -110,13 +74,9 @@ module.exports = function(array1, array2, options){
     switch(options.show) {
 
       case 'missing':
-        return diff_missing(array1, array2);
-
       case 'common':
-        return diff_common(array1, array2);
-
       case 'likeness':
-        return likeness(array1, array2);
+        return likeness(array1, array2, options.show);
 
       default:
         return compareArrayElements(array1, array2);
