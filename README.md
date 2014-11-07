@@ -60,4 +60,6 @@ var result = comparray(array1, array2, {show: 'missing'});     // result will be
 
 var result2 = comparray(array1, array2, {show: 'common'});     // result2 will be [ 0, 1 ]
 
+var result3 = comparray(array1, array2, {show: 'likeness'});   // result3 will be 0.5
+
 ```
