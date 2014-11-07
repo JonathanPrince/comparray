@@ -71,23 +71,13 @@ module.exports = function(array1, array2, options){
 
   if(options.hasOwnProperty('show')) {
 
-    switch(options.show) {
+    return likeness(array1, array2, options.show);
 
-      case 'missing':
-      case 'common':
-      case 'likeness':
-        return likeness(array1, array2, options.show);
+  } else if (array1.length !== array2.length) {
 
-      default:
-        return compareArrayElements(array1, array2);
-
-    }
+    return false;
 
   } else {
-
-    if (array1.length !== array2.length) {
-      return false;
-    }
 
     return compareArrayElements(array1, array2);
 
