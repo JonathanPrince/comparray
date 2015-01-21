@@ -247,6 +247,20 @@ describe('comparray module', function(){
       });
 
     });
+
+    describe('if the third argument contains the key order', function(){
+      describe('with value false', function(){
+        it('should return true if the arrays have the same elements regardless of order', function(){
+          var arr1 = ['one', 'two', 'three', 'four'];
+          var arr2 = ['three', 'one', 'four', 'two'];
+          var obj = {
+            order: false
+          };
+          var result = comparray(arr1, arr2, obj);
+          expect(result).to.be(true);
+        });
+      });
+    });
   });
 
 });
