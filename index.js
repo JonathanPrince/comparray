@@ -96,6 +96,11 @@ module.exports = function(array1, array2, options){
 
   } else {
 
+    if (options.hasOwnProperty('order') && options.order === false){
+      array1 = array1.sort();
+      array2 = array2.sort();
+    }
+
     return compareArrayElements(array1, array2);
 
   }
