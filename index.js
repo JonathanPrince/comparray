@@ -21,14 +21,19 @@ module.exports = function(array1, array2, options){
         if (Array.isArray(firstArray[i]) && Array.isArray(secondArray[i])) {
 
           if (!compareArrayElements(firstArray[i], secondArray[i])){
+
             return false;
+
           }
 
         } else if (Number.isNaN(firstArray[i]) && Number.isNaN(secondArray[i])) {
+
           continue;
+
         } else {
 
           return false;
+
         }
       }
     }
@@ -45,27 +50,39 @@ module.exports = function(array1, array2, options){
     arrB = secondArray;
 
     if (mode !== 'missing' && firstArray.length <= secondArray.length) {
+
       arrA = secondArray;
       arrB = firstArray;
+
     }
 
     total  = arrA.length;
     common = 0;
 
     for (var i = 0;i < total;i++) {
+
       el = arrA[i];
+
       if (arrB.indexOf(el) >= 0 && mode !== 'missing') {
+
         result.push(el);
         common++;
+
       } else if (secondArray.indexOf(el) === -1 && mode === 'missing') {
+
         result.push(el);
+
       }
     }
 
     if (mode === 'likeness') {
+
       return common / total;
+
     } else {
+
       return result;
+
     }
   }
 
@@ -82,5 +99,4 @@ module.exports = function(array1, array2, options){
     return compareArrayElements(array1, array2);
 
   }
-
 };
