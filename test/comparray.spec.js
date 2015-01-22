@@ -259,6 +259,15 @@ describe('comparray module', function(){
           var result = comparray(arr1, arr2, obj);
           expect(result).to.be(true);
         });
+        it('should return true if: arrays have same elements(incl. nested array)', function(){
+          var arr1 = ['one', 'two', 'three', 'four', ['five', 'six']];
+          var arr2 = ['three', 'one', ['five', 'six'], 'four', 'two'];
+          var obj = {
+            order: false
+          };
+          var result = comparray(arr1, arr2, obj);
+          expect(result).to.be(true);
+        });
       });
     });
   });
