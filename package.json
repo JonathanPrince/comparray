@@ -1,6 +1,6 @@
 {
   "name": "comparray",
-  "version": "1.2.2",
+  "version": "1.2.0",
   "description": "Module for comparing arrays",
   "main": "index.js",
   "scripts": {
