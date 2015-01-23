@@ -48,7 +48,7 @@ var result2 = comparray(array1, array2);    // result2 will be false
 
 ```
 
-Example using options
+Example using the 'show' option
 ```js
 
 var comparray = require('comparray');
@@ -63,3 +63,16 @@ var result2 = comparray(array1, array2, {show: 'common'});     // result2 will b
 var result3 = comparray(array1, array2, {show: 'likeness'});   // result3 will be 0.5
 
 ```
+
+Example using the 'order' option
+```js
+
+var comparray = require('comparray');
+
+var array1 = [ 0, 1, 2, 3 ];
+var array2 = [ 1, 0, 3, 2 ];
+
+var result = comparray(array1, array2, {order: false}); // result will be true
+
+```
+Note: The {order: false} option currently only applies to first level elements, nested arrays that do not have the same elements and order will return false.
